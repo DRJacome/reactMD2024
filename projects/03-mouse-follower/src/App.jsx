@@ -1,3 +1,8 @@
+/* INSTALAR:
+- A nivel de repositorio como dependencia de desarrollo (-D):
+npm i standard -D
+*/
+
 import { useState, useEffect } from "react";
 
 const FollowMouse = () => {
@@ -8,6 +13,7 @@ const FollowMouse = () => {
     useEffect(() => {
         console.log("Efecto", { enabled });
 
+        /* Manejar la activación del seguimiento del cursor */
         const handleMove = (evento) => {
             const { clientX, clientY } = evento;
             console.log("handleMove", { clientX, clientY });
@@ -27,10 +33,20 @@ const FollowMouse = () => {
             window.removeEventListener("pointermove", handleMove);
         };
     }, [enabled]);
+
+    // useEffect para cambiar la aparición o desaparición del cursor:
+    useEffect(() => {
+        document.body.classList.toggle("no-cursor", enabled);
+
+        return () => {
+            document.body.classList.remove("no-cursor");
+        };
+    }, [enabled]);
+
     return (
         <>
             <div
-            /* Estilos en línea en React; siempre se han de definir como un objeto. */
+                /* Estilos en línea en React; siempre se han de definir como un objeto. */
                 style={{
                     position: "absolute",
                     backgroundColor: "#09f",
