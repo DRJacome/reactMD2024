@@ -6,6 +6,9 @@
      "eslintConfig": {
     "extends": "./node_modules/standard/eslintrc.json"
   }
+
+Testing con PLAYWRIGHT:
+- npm init playwright@latest
 */
 /* Renombrar la extensión del archivo main.js a main.jsx 
 y referenciarlo correctamente en el index.html*/
