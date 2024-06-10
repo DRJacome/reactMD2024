@@ -4,6 +4,7 @@ export const saveGameToStorage = ({ board, turn }) => {
     window.localStorage.setItem("turn", JSON.stringify(turn));
 }
 
+/* Reiniciar partida. */
 export const resetSaveGameStorage = () => {
     window.localStorage.removeItem("board");
     window.localStorage.removeItem("turn");

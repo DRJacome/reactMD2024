@@ -30,8 +30,7 @@ function App() {
         return turnFromStorage ?? TURNS.X;
     });
 
-    // Null es que no hay ganador, y false es que hay empate.
-    const [winner, setWinner] = useState(null);
+    const [winner, setWinner] = useState(null); // Null es que no hay ganador, y false es que hay empate.
 
     const updateBoard = (index) => {
         /* Si ya hay algo en la posición en la que clica el jugador, se finaliza la ejecución (return) sin continuar 
