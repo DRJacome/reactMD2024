@@ -10,14 +10,14 @@ API a usar:
 
 Requisitos:
 
-- Necesita mostrar un input para buscar la película y un botón para buscar.
-- Lista las películas encontradas y muestra el título, año y poster.
-- Haz que el formulario funcione.
-- Haz que las películas se muestren en un grid responsive.
-- Hacer el fetching de datos a la API.
+- [X] Necesita mostrar un input para buscar la película y un botón para buscar.
+- [X] Lista las películas encontradas y muestra el título, año y poster.
+- [X] Haz que el formulario funcione.
+- [X] Haz que las películas se muestren en un grid responsive.
+- [X] Hacer el fetching de datos a la API.
 
 Primera iteración:
 
-- Evitar que se haga la misma búsqueda dos veces seguidas.
-- haz que la búsqueda se haga automáticamente al escribir.
-- Evita que se haga la búsqueda continuamente al escribir (debounce).
+- [X] Evitar que se haga la misma búsqueda dos veces seguidas.
+- [X] haz que la búsqueda se haga automáticamente al escribir.
+- [X] Evita que se haga la búsqueda continuamente al escribir (debounce).

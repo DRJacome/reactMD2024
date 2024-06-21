@@ -1,7 +1,13 @@
+/* 
+INSTALAR:
+npm i just-debounce-it -E
+*/
+
 import "./App.css";
 import { useMovies } from "./hooks/useMovies";
 import { Movies } from "./components/Movies";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
+import debounce from "just-debounce-it";
 
 function useSearch() {
     const [search, updateSearch] = useState("");
@@ -33,18 +39,33 @@ function useSearch() {
 }
 
 function App() {
+    const [sort, setSort] = useState(false);
     const { search, updateSearch, error } = useSearch();
-    const { movies, loading, getMovies } = useMovies({ search });
+    const { movies, loading, getMovies } = useMovies({ search, sort });
+
+    console.log("En cada render ejecuto esto:");
+    const debouncedGetMovies = useCallback(
+        debounce((search) => {
+            console.log("Search", search);
+            getMovies({ search });
+        }, 300),
+        [getMovies]
+    );
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        getMovies();
+        getMovies({ search });
     };
 
     const handleChange = (event) => {
-        updateSearch(event.target.value);
+        const newSearch = event.target.value;
+        updateSearch(newSearch);
+        debouncedGetMovies(newSearch);
     };
 
+    const handleSort = () => {
+        setSort(!sort);
+    };
     return (
         <div className='page'>
             <header>
@@ -61,6 +82,11 @@ function App() {
                         type='text'
                         placeholder='Avengers, Star Wars, Matrix...'
                         size={22}
+                    />
+                    <input
+                        type='checkbox'
+                        onChange={handleSort}
+                        checked={sort}
                     />
                     <button type='submit'>Buscar</button>
                 </form>
