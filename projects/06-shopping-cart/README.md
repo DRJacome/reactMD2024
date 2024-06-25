@@ -5,8 +5,7 @@
 * [X] Muestra una lista de productos que vienen de un JSON.
 * [X] Añade un filtro por categoría.
 * [X] Añade un filtro por precio.
-
-Haz uso de useContext para evitar pasar props innecesarias.
+* [X] Haz uso de useContext para evitar pasar props innecesarias.
 
 2. Cienda online.
 

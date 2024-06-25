@@ -1,6 +1,8 @@
+import { useFilters } from "../useFilters";
 import "./Footer.css";
 
-function Footer({ filters }) {
+function Footer() {
+    const { filters } = useFilters();
     return (
         <footer className='footer'>
             {JSON.stringify(filters, null, 2)}
