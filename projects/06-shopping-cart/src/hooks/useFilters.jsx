@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { FiltersContext } from "./context/FiltersContext";
+import { FiltersContext } from "../context/FiltersContext";
 
 function useFilters() {
     const { filters, setFilters } = useContext(FiltersContext);
