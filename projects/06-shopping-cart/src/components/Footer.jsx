@@ -1,5 +1,3 @@
-import { useCart } from "../hooks/useCart";
-import { useFilters } from "../hooks/useFilters";
 import "./Footer.css";
 
 function Footer() {

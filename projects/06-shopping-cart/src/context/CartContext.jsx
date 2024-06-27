@@ -1,49 +1,47 @@
-import { createContext, useState } from "react";
+import { createContext, useReducer } from "react";
+import {
+    cartReducer,
+    cartInitialState,
+    CART_ACTION_TYPES,
+} from "../reducers/CartReducer";
+("../reducers/CartReducer");
 
 /* 1. Crear contexto */
 export const CartContext = createContext();
 
+/* Usar Reducer */
+function useCartReducer() {
+    const [state, dispatch] = useReducer(cartReducer, cartInitialState);
+
+    const addToCart = (product) =>
+        /* IMPORTANTE: es preferible usar constantes definidas en CART_ACTION_TYPES 
+           para los tipos de acción en lugar de strings literales.
+           Ambas formas son funcionales, pero usar CART_ACTION_TYPES es buena práctica. */
+        dispatch({
+            type: CART_ACTION_TYPES.ADD_TO_CART,
+            payload: product,
+        });
+
+    const removeFromCart = (product) =>
+        dispatch({
+            type: CART_ACTION_TYPES.REMOVE_FROM_CART, // Preferible a "REMOVE_FROM_CART"
+            payload: product,
+        });
+
+    const clearCart = () =>
+        dispatch({
+            type: CART_ACTION_TYPES.CLEAR_CART,
+        });
+    return { state, addToCart, removeFromCart, clearCart };
+}
+
 /* 2. Crear Prodiver */
 export function CartProvider({ children }) {
-    const [cart, setCart] = useState([]);
-
-    const addToCart = (product) => {
-        /* Comprobar si el producto ya está en el carrito. */
-        const productInCartIndex = cart.findIndex(
-            (item) => item.id === product.id
-        );
-
-        /* Comprobarción con structuredClone (copia profunda de objeto). */
-        if (productInCartIndex >= 0) {
-            const newCart = structuredClone(cart);
-            newCart[productInCartIndex].quantity += 1;
-            return setCart(newCart);
-        }
-
-        /* Si no está en el carrito, se añade. */
-        setCart((prevState) => [
-            ...prevState,
-            {
-                ...product,
-                quantity: 1,
-            },
-        ]);
-    };
-
-    const removeFromCart = (product) => {
-        setCart((prevState) =>
-            prevState.filter((item) => item.id != product.id)
-        );
-    };
-
-    const clearCart = () => {
-        setCart([]);
-    };
-
+    const { state, addToCart, removeFromCart, clearCart } = useCartReducer();
     return (
         <CartContext.Provider
             value={{
-                cart,
+                cart: state,
                 addToCart,
                 removeFromCart,
                 clearCart,
