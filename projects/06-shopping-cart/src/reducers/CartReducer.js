@@ -48,7 +48,7 @@ const UPDATE_STATE_BY_ACTION = {
         updateLocalStorage(newState);
         return newState;
     },
-    [CART_ACTION_TYPES.CLEAR_CART]: (state, action) => {
+    [CART_ACTION_TYPES.CLEAR_CART]: () => {
         updateLocalStorage([]);
         return [];
     },

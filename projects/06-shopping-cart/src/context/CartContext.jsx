@@ -5,6 +5,7 @@ import {
     CART_ACTION_TYPES,
 } from "../reducers/CartReducer";
 ("../reducers/CartReducer");
+import PropTypes from "prop-types";
 
 /* 1. Crear contexto */
 export const CartContext = createContext();
@@ -50,3 +51,7 @@ export function CartProvider({ children }) {
         </CartContext.Provider>
     );
 }
+
+CartProvider.propTypes = {
+    children: PropTypes.node.isRequired,
+};

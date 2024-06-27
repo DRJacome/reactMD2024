@@ -9,8 +9,8 @@
 
 2. Cienda online.
 
-1. [ ] Haz que se puedan añadir los productos a un carrito.
-2. [ ] Haz que se puedan eliminar los productos de carrito.
-3. [ ] Haz que se puedan modiciar la cantidad de productos del carrito.
-4. [ ] Sincroniza los cambios del carrito con la lista de productos.
-5. [ ] Guarda en un localStorage el carrito para que se recupere al recargar la página.
+1. [X] Haz que se puedan añadir los productos a un carrito.
+2. [X] Haz que se puedan eliminar los productos de carrito.
+3. [X] Haz que se puedan modificar la cantidad de productos del carrito.
+4. [X] Sincroniza los cambios del carrito con la lista de productos.
+5. [X] Guarda en un localStorage el carrito para que se recupere al recargar la página.

@@ -1,7 +1,8 @@
 import { useId } from "react";
 import { CartIcon, ClearCartIcon } from "./Icons";
-import "./Cart.css";
 import { useCart } from "../hooks/useCart";
+import PropTypes from "prop-types";
+import "./Cart.css";
 
 function CartItem({ thumbnail, price, title, quantity, addToCart }) {
     return (
@@ -45,3 +46,11 @@ export function Cart() {
         </>
     );
 }
+
+CartItem.propTypes = {
+    thumbnail: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    quantity: PropTypes.number.isRequired,
+    addToCart: PropTypes.func.isRequired,
+};

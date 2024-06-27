@@ -1,6 +1,7 @@
 import "./Products.css";
 import { AddToCartIcon, RemoveFromCartIcon } from "./Icons";
 import { useCart } from "../hooks/useCart";
+import PropTypes from "prop-types";
 
 export function Products({ products }) {
     const { addToCart, removeFromCart, cart } = useCart();
@@ -47,3 +48,15 @@ export function Products({ products }) {
         </main>
     );
 }
+
+Products.propTypes = {
+    products: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            title: PropTypes.string.isRequired,
+            price: PropTypes.number.isRequired,
+            thumbnail: PropTypes.string.isRequired,
+        })
+    ).isRequired,
+};
+

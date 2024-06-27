@@ -7,8 +7,6 @@ function Filters() {
     const minPriceFilteredId = useId();
     const categoryFilteredId = useId();
 
-    console.log({ minPriceFilteredId, categoryFilteredId });
-
     const handleChangeMinPrice = (event) => {
         setFilters((prevState) => ({
             ...prevState,
